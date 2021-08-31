@@ -99,7 +99,10 @@ export class Request {
   }
 
   addHeader(key: string, value: string) {
-    this.axiosConfig.headers ??= {}
+    if (!this.axiosConfig.headers) {
+      this.axiosConfig.headers = {}
+    }
+
     this.axiosConfig.headers[key] = value
     return this
   }
@@ -110,7 +113,10 @@ export class Request {
   }
 
   addParams(key: string, value: string) {
-    this.axiosConfig.params ??= {}
+    if (!this.axiosConfig.params) {
+      this.axiosConfig.params = {}
+    }
+
     this.axiosConfig.params[key] = value
     return this
   }
