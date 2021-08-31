@@ -3,7 +3,7 @@ import {Request} from './Request'
 import {ClassTransformOptions} from 'class-transformer'
 
 export class AxiosTransformer {
-  readonly instance: AxiosInstance
+  instance: AxiosInstance
 
   constructor(axiosInstance?: AxiosInstance) {
     this.instance = axiosInstance ?? axios
