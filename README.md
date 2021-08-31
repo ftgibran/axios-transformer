@@ -141,35 +141,35 @@ axiosT.event.on('requestEnd', endCb)
 const myBlogPost = await axiosT.get('https://jsonplaceholder.typicode.com/posts/1')
   .withName('foo') // set the request name here
   .as(BlogPost)
-  .getData()
+  .fetchData()
 
 // then the listeners will be called
 // startCbCount and endCbCount are both 1 now
 
-axiosT.event.on('requestStart', startCb) // you can remove the specific listener
+axiosT.event.off('requestStart', startCb) // you can remove the specific listener
 axiosT.event.clean() // or remove all listeners
 ```
 
 ### Ignore fields and map names and types with Annotations
 Using Class-Transformer we can control the serialization behaviour
 
-#### `@ResponseSerialize(func)` or `@Type(func)`
+#### `@AxiosTransform(clsType)` or `@Type(() => clsType)`
 [Working with nested objects](https://github.com/typestack/class-transformer#working-with-nested-objects)
 
-#### `@ResponseExpose(name?)` or `@Expose({ name, toClassOnly: true })`
+#### `@AxiosRequestExpose(name?)` or `@Expose({ name, toPlainOnly: true })`
 [Skipping depend of operation](https://github.com/typestack/class-transformer#skipping-depend-of-operation)
 
-#### `@RequestExpose(name?)` or `@Expose({ name, toPlainOnly: true })`
+#### `@AxiosResponseExpose(name?)` or `@Expose({ name, toClassOnly: true })`
 [Skipping depend of operation](https://github.com/typestack/class-transformer#skipping-depend-of-operation)
 
-#### `@HttpExpose(name?)` or `@Expose({ name })`
+#### `@AxiosExpose(name?)` or `@Expose({ name })`
 [Exposing properties with different names](https://github.com/typestack/class-transformer#exposing-properties-with-different-names)
 
-#### `@RequestExclude()` or `@Exclude({ toPlainOnly: true })`
+#### `@AxiosRequestExclude()` or `@Exclude({ toPlainOnly: true })`
 [Skipping depend of operation](https://github.com/typestack/class-transformer#skipping-depend-of-operation)
 
-#### `@ResponseExclude()` or `@Exclude({ toClassOnly: true })`
+#### `@AxiosResponseExclude()` or `@Exclude({ toClassOnly: true })`
 [Skipping depend of operation](https://github.com/typestack/class-transformer#skipping-depend-of-operation)
 
-#### `@HttpExclude()` or `@Exclude()`
+#### `@AxiosExclude()` or `@Exclude()`
 [Skipping specific properties](https://github.com/typestack/class-transformer#skipping-specific-properties)
