@@ -18,3 +18,5 @@ export const axiosT: AxiosStaticT = utils.extend(new AxiosTransformer(), {
   spread: axios.spread,
   isAxiosError: axios.isAxiosError,
 })
+
+axiosT.instance.options()
